@@ -7,6 +7,7 @@ mFont(),
 mWorld(mWindow),
 textFPS(),
 framesCount(0),
+mIsPaused(false),
 statTime(sf::seconds(0)),
 FrameTime(sf::seconds(1.f/144.f)) {
 	if (!mFont.loadFromFile("./resources/fonts/impact.ttf")) {
@@ -26,16 +27,18 @@ void Game::run() {
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	while (mWindow.isOpen()) {
-		processEvents();
-		sf::Time elapsedTime = clock.restart();
-		timeSinceLastUpdate += elapsedTime;
-		while (timeSinceLastUpdate > FrameTime) {
-			timeSinceLastUpdate -= FrameTime;
-			processEvents();
-			update(FrameTime);
+		if (!mIsPaused) {
+			sf::Time elapsedTime = clock.restart();
+			timeSinceLastUpdate += elapsedTime;
+			while (timeSinceLastUpdate > FrameTime) {
+				timeSinceLastUpdate -= FrameTime;
+				processEvents();
+				update(FrameTime);
+			}
+			updateStatistics(elapsedTime);
 		}
-		updateStatistics(elapsedTime);
 		render();
+		processEvents();
 	}
 }
 
@@ -53,12 +56,14 @@ void Game::processEvents() {
 			break;
 		case sf::Event::KeyReleased:
 			break;
+		case sf::Event::GainedFocus:
+			mIsPaused = false;
+			break;
+		case sf::Event::LostFocus:
+			mIsPaused = true;
+			break;
 		default:
 			break;
-		}
-		
-		if (event.type == sf::Event::Closed) {
-			mWindow.close();
 		}
 	}
 }
@@ -87,3 +92,4 @@ void Game::render() {
 	mWindow.draw(textFPS);
 	mWindow.display();
 }
+

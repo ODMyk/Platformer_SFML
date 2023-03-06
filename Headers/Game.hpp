@@ -15,6 +15,7 @@ private:
 
 private:
 	Avatar* mPlayer;
+	bool mIsPaused;
 
 	sf::RenderWindow mWindow;
 	World mWorld;
