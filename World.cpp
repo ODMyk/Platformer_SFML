@@ -59,20 +59,7 @@ void World::draw() {
 
 void World::update(sf::Time timedelta) {
 	// I am not sure, that player movement logic have to be there, in some time this code functionality should be implemented with commands concept
-	sf::Vector2f movement(0, 0);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		movement.y -= mPlayerSpeed;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		movement.y += mPlayerSpeed;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		movement.x -= mPlayerSpeed;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		movement.x += mPlayerSpeed;
-	}
-	mPlayerAvatar->move(movement * timedelta.asSeconds());
+	mPlayerAvatar->setVelocity(0.f, 0.f);
 	sf::Vector2f absPlayerPos = mPlayerAvatar->getPosition();
 	sf::Vector2f CameraTopLeft = sf::Vector2f(mWorldView.getCenter().x - mWorldView.getSize().x / 2.f, mWorldView.getCenter().y - mWorldView.getSize().y / 2.f);
 	sf::Vector2f relPlayerPos = sf::Vector2f(absPlayerPos.x - CameraTopLeft.x, absPlayerPos.y - CameraTopLeft.y); // position of the player center, relative to the Top Left angle of camera view
@@ -86,7 +73,7 @@ void World::update(sf::Time timedelta) {
 	//	mWorldView.move(0, movement.y * timedelta.asSeconds());
 	//}
 
-	mWorldView.move(movement * timedelta.asSeconds());
+	mWorldView.setCenter(mPlayerAvatar->getPosition());
 
 	while (!mCommandQueue.isEmpty()) {
 		mSceneGraph.onCommand(mCommandQueue.pop(), timedelta);

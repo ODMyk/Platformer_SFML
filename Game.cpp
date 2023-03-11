@@ -32,40 +32,33 @@ void Game::run() {
 			timeSinceLastUpdate += elapsedTime;
 			while (timeSinceLastUpdate > FrameTime) {
 				timeSinceLastUpdate -= FrameTime;
-				processEvents();
+				processInput();
 				update(FrameTime);
 			}
 			updateStatistics(elapsedTime);
 		}
 		render();
-		processEvents();
+		processInput();
 	}
 }
 
-void Game::processEvents() {
+void Game::processInput() {
+	CommandQueue& commands = mWorld.getCommandQueue();
+
 	sf::Event event;
 	while (mWindow.pollEvent(event)) {
-		switch (event.type) {
-		case sf::Event::Closed:
+		mPlayer.handleEvent(event, commands);
+
+		if (event.type == sf::Event::Closed) {
 			mWindow.close();
-			break;
-		case sf::Event::KeyPressed:
-			if (event.key.code == sf::Keyboard::Escape) {
-				mWindow.close();
-			}
-			break;
-		case sf::Event::KeyReleased:
-			break;
-		case sf::Event::GainedFocus:
-			mIsPaused = false;
-			break;
-		case sf::Event::LostFocus:
-			mIsPaused = true;
-			break;
-		default:
-			break;
+		}
+
+		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+			mWindow.close();
 		}
 	}
+
+	mPlayer.handleRealtimeInput(commands);
 }
 
 void Game::update(sf::Time timedelta) {
