@@ -1,11 +1,13 @@
 #pragma once
-#include "SFML/Graphics/Transform.hpp"
-#include "SFML/System/Time.hpp"
-#include "SFML/System/Vector2.hpp"
+#include <SFML/Graphics/Transform.hpp>
+#include <SFML/System/Time.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <memory>
 #include <vector>
 #include <cassert>
 #include <SFML/Graphics.hpp>
+
+#include "Category.hpp"
 
 class SceneNode: public sf::Drawable, public sf::Transformable, private sf::NonCopyable
 {
@@ -15,6 +17,7 @@ public:
 
 	sf::Transform getWorldTransform() const;
 	sf::Vector2f getWorldPosition() const;
+	virtual unsigned int getCategory() const;
 	void attachChild(Ptr child);
 	void update(sf::Time timedelta);
 	Ptr detachChild(const SceneNode& node);

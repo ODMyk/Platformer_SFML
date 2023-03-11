@@ -52,3 +52,7 @@ sf::Transform SceneNode::getWorldTransform() const {
 sf::Vector2f SceneNode::getWorldPosition() const {
 	return getWorldTransform() * sf::Vector2f();
 }
+
+unsigned int SceneNode::getCategory() const {
+	return Category::Scene;
+}
