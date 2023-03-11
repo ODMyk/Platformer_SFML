@@ -13,7 +13,8 @@ public:
 		standard,
 	};
 	explicit Avatar(Type type, const TextureHolder& textures);
-	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
+	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const override;
+	unsigned int getCategory() const override;
 private:
 	Type mType;
 	sf::Sprite mSprite;

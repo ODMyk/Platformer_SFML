@@ -1,5 +1,4 @@
 #include "Avatar.hpp"
-#include "SFML/Graphics/Rect.hpp"
 
 Textures::ID toTextureID(Avatar::Type type) {
 	switch (type) {
@@ -21,4 +20,14 @@ Avatar::Avatar(Type type, const TextureHolder& textures):
 
 void Avatar::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const {
         target.draw(mSprite, states);
+}
+
+unsigned int Avatar::getCategory() const {
+	switch (mType) {
+		case standard:
+			return Category::Player;
+
+		default:
+			return Category::Scene;
+	}
 }
