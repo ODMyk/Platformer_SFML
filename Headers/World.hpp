@@ -8,6 +8,7 @@
 
 #include "SceneNode.hpp"
 #include "Avatar.hpp"
+#include "CommandQueue.hpp"
 
 
 class World: private sf::NonCopyable {
@@ -15,6 +16,7 @@ public:
 	explicit World(sf::RenderWindow& window);
 	void update(sf::Time timedelta);
 	void draw();
+	CommandQueue& getCommandQueue();
 private:
 	void loadTextures();
 	void buildScene();
@@ -35,4 +37,5 @@ private:
 	sf::Vector2f mSpawnPosition;
 	Avatar* mPlayerAvatar;
 	float mPlayerSpeed;
+	CommandQueue mCommandQueue;
 };

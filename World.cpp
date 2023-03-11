@@ -87,5 +87,14 @@ void World::update(sf::Time timedelta) {
 	//}
 
 	mWorldView.move(movement * timedelta.asSeconds());
+
+	while (!mCommandQueue.isEmpty()) {
+		mSceneGraph.onCommand(mCommandQueue.pop(), timedelta);
+	}
+
 	mSceneGraph.update(timedelta);
+}
+
+CommandQueue& World::getCommandQueue() {
+	return mCommandQueue;
 }
