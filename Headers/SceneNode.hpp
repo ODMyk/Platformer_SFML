@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Category.hpp"
+#include "Command.hpp"
 
 class SceneNode: public sf::Drawable, public sf::Transformable, private sf::NonCopyable
 {
@@ -21,6 +22,7 @@ public:
 	void attachChild(Ptr child);
 	void update(sf::Time timedelta);
 	Ptr detachChild(const SceneNode& node);
+	void onCommand(const Command& command, sf::Time dt);
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
