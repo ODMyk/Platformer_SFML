@@ -13,7 +13,7 @@
 World::World(sf::RenderWindow& window):
 	mWindow(window),
 	mWorldView(window.getDefaultView()),
-	mWorldBounds(0.0f, 0.0f, mWorldView.getSize().x, 2000.f),
+	mWorldBounds(0.0f, 0.0f, 0.f, 0.f),
 	mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f),
 	mPlayerAvatar(nullptr),
 	mPlayerSpeed(450.f)
@@ -39,6 +39,8 @@ void World::buildScene() {
 	}
 
 	sf::Texture& texture = mTextures.get(Textures::Background);
+	mWorldBounds.width = texture.getSize().x + 32.f;
+	mWorldBounds.height = texture.getSize().y + 32.f;
 	sf::IntRect textureRect(mWorldBounds);
 	//texture.setRepeated(true); // uncomment if you have pattern-background
 
@@ -59,20 +61,7 @@ void World::draw() {
 
 void World::update(sf::Time timedelta) {
 	// I am not sure, that player movement logic have to be there, in some time this code functionality should be implemented with commands concept
-	sf::Vector2f movement(0, 0);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		movement.y -= mPlayerSpeed;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		movement.y += mPlayerSpeed;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		movement.x -= mPlayerSpeed;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		movement.x += mPlayerSpeed;
-	}
-	mPlayerAvatar->move(movement * timedelta.asSeconds());
+	mPlayerAvatar->setVelocity(0.f, 0.f);
 	sf::Vector2f absPlayerPos = mPlayerAvatar->getPosition();
 	sf::Vector2f CameraTopLeft = sf::Vector2f(mWorldView.getCenter().x - mWorldView.getSize().x / 2.f, mWorldView.getCenter().y - mWorldView.getSize().y / 2.f);
 	sf::Vector2f relPlayerPos = sf::Vector2f(absPlayerPos.x - CameraTopLeft.x, absPlayerPos.y - CameraTopLeft.y); // position of the player center, relative to the Top Left angle of camera view
@@ -86,6 +75,26 @@ void World::update(sf::Time timedelta) {
 	//	mWorldView.move(0, movement.y * timedelta.asSeconds());
 	//}
 
-	mWorldView.move(movement * timedelta.asSeconds());
+
+	while (!mCommandQueue.isEmpty()) {
+		mSceneGraph.onCommand(mCommandQueue.pop(), timedelta);
+	}
+
 	mSceneGraph.update(timedelta);
+
+	sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
+
+	const float border = 32.f;
+	sf::Vector2f position = mPlayerAvatar->getPosition();
+	position.x = std::max(mWorldBounds.left + border + viewBounds.width / 2, position.x);
+	position.x = std::min(mWorldBounds.left + mWorldBounds.width - border - viewBounds.width / 2, position.x);
+	position.y = std::max(mWorldBounds.top + border + viewBounds.height / 2, position.y);
+	position.y = std::min(mWorldBounds.top + mWorldBounds.height - border - viewBounds.height / 2, position.y);
+
+	mPlayerAvatar->setPosition(position);
+	mWorldView.setCenter(position);
+}
+
+CommandQueue& World::getCommandQueue() {
+	return mCommandQueue;
 }

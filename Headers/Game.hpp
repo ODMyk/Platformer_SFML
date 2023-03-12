@@ -1,5 +1,6 @@
 #pragma once
 #include "Avatar.hpp"
+#include "Player.hpp"
 #include "World.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -8,13 +9,13 @@ public:
 	Game();
 	void run();
 private:
-	void processEvents();
+	void processInput();
 	void update(sf::Time timedelta);
 	void updateStatistics(sf::Time timedelta);
 	void render();
 
 private:
-	Avatar* mPlayer;
+	Player mPlayer;
 	bool mIsPaused;
 
 	sf::RenderWindow mWindow;
