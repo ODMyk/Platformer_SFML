@@ -4,6 +4,7 @@
 #include "Category.hpp"
 #include "Command.hpp"
 #include "Player.hpp"
+#include "SFML/Window/Keyboard.hpp"
 #include <cmath>
 
 struct BodyMover {
@@ -15,42 +16,110 @@ struct BodyMover {
 	sf::Vector2f velocity;
 };
 
-Player::Player() {}
+Player::Player() {
+	mKeyBinding[sf::Keyboard::W] = MoveUp;
+	mKeyBinding[sf::Keyboard::S] = MoveDown;
+	mKeyBinding[sf::Keyboard::A] = MoveLeft;
+	mKeyBinding[sf::Keyboard::D] = MoveRight;
+	mKeyBinding[sf::Keyboard::P] = PrintPosition;
+
+	initializeActions();
+
+	for (auto& pair: mActionBinding) {
+		pair.second.category = Category::Player;
+	}
+}
+
+void Player::initializeActions() {
+	const float speed = 450.f;
+
+	mActionBinding[MoveUp].action = derivedAction<Avatar>(BodyMover(0.f, -speed));
+	mActionBinding[MoveDown].action = derivedAction<Avatar>(BodyMover(0.f, speed));
+	mActionBinding[MoveLeft].action = derivedAction<Avatar>(BodyMover(-speed, 0.f));
+	mActionBinding[MoveRight].action = derivedAction<Avatar>(BodyMover(speed, 0.f));
+	mActionBinding[PrintPosition].action = [] (SceneNode& node, sf::Time) {
+		std::cout << node.getPosition().x << " " << node.getPosition().y << std::endl;
+	};
+}
 
 void Player::handleRealtimeInput(CommandQueue &commands) {
 	const float playerSpeed = 450.f;
+	const float reducer = playerSpeed * (1.f - 1.f / sqrt(2.f));
+	std::map<Action, bool> actions;
+	actions[MoveLeft] = false;
+	actions[MoveRight] = false;
+	actions[MoveDown] = false;
+	actions[MoveUp] = false;
 
-	bool W = sf::Keyboard::isKeyPressed(sf::Keyboard::W);
-	bool S = sf::Keyboard::isKeyPressed(sf::Keyboard::S);
-	bool A = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
-	bool D = sf::Keyboard::isKeyPressed(sf::Keyboard::D);
-
-	sf::Vector2f movement(0.f, 0.f);
-
-	movement.x = playerSpeed * (D - A);
-	movement.y = playerSpeed * (S - W);
-
-	if (movement.x && movement.y) {
-		movement.x /= sqrt(2);
-		movement.y /= sqrt(2);
+	for (auto pair: mKeyBinding) {
+		if (sf::Keyboard::isKeyPressed(pair.first) && isRealtimeAction(pair.second)) {
+			commands.push(mActionBinding[pair.second]);
+			actions[pair.second] = true;
+		}
 	}
 
-	if (movement.x || movement.y) {
-		Command move;
-		move.category = Category::Player;
-		move.action = derivedAction<Avatar>(BodyMover(movement.x, movement.y));
+	bool W = actions[Action::MoveUp];
+	bool S = actions[Action::MoveDown];
+	bool A = actions[Action::MoveLeft];
+	bool D = actions[Action::MoveRight];
 
-		commands.push(move);
+	Command reduce;
+	reduce.category = Category::Player;
+
+	if (W && !S) {
+		if (A && !D) {
+			reduce.action = derivedAction<Avatar>(BodyMover(reducer, reducer));
+			commands.push(reduce);
+		} else if (!A && D) {
+			reduce.action = derivedAction<Avatar>(BodyMover(-reducer, reducer));
+			commands.push(reduce);
+		}
+	} else if (!W && S) {
+		if (A && !D) {
+			reduce.action = derivedAction<Avatar>(BodyMover(reducer, -reducer));
+			commands.push(reduce);
+		} else if (!A && D) {
+			reduce.action = derivedAction<Avatar>(BodyMover(-reducer, -reducer));
+			commands.push(reduce);
+		}
 	}
 }
 
 void Player::handleEvent(const sf::Event &event, CommandQueue &commands) {
-	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P) {
-		Command out;
-		out.category = Category::Player;
-		out.action = [] (SceneNode& node, sf::Time) {
-			std::cout << node.getPosition().x << " " << node.getPosition().y << std::endl;
-		};
-		commands.push(out);
+	if (event.type == sf::Event::KeyPressed) {
+		auto found = mKeyBinding.find(event.key.code);
+		if (found != mKeyBinding.end() && !isRealtimeAction(found->second)) {
+			commands.push(mActionBinding[found->second]);
+		}
+	}
+}
+
+void Player::assignKey(Action action, sf::Keyboard::Key key) {
+	for (auto itr = mKeyBinding.begin(); itr != mKeyBinding.end(); ++itr) {
+		if (itr->second == action) {
+			mKeyBinding.erase(itr);
+		}
+	}
+	mKeyBinding[key] = action;
+}
+
+sf::Keyboard::Key Player::getAssignedKey(Action action) const {
+	for (auto pair: mKeyBinding) {
+		if (pair.second == action) {
+			return pair.first;
+		}
+	}
+	return sf::Keyboard::Unknown;
+}
+
+bool Player::isRealtimeAction(Action action) {
+	switch(action) {
+		case MoveUp:
+		case MoveDown:
+		case MoveLeft:
+		case MoveRight:
+			return true;
+		default:
+			return false;
 	}
 }
