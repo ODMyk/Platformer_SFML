@@ -13,7 +13,7 @@
 World::World(sf::RenderWindow& window):
 	mWindow(window),
 	mWorldView(window.getDefaultView()),
-	mWorldBounds(0.0f, 0.0f, mWorldView.getSize().x, 2000.f),
+	mWorldBounds(0.0f, 0.0f, 3472.f, 1472.f), // hardcoded image resolution
 	mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f),
 	mPlayerAvatar(nullptr),
 	mPlayerSpeed(450.f)
@@ -79,7 +79,18 @@ void World::update(sf::Time timedelta) {
 	}
 
 	mSceneGraph.update(timedelta);
-	mWorldView.setCenter(mPlayerAvatar->getPosition());
+
+	sf::FloatRect viewBounds(mWorldView.getCenter() - mWorldView.getSize() / 2.f, mWorldView.getSize());
+
+	const float border = 32.f;
+	sf::Vector2f position = mPlayerAvatar->getPosition();
+	position.x = std::max(mWorldBounds.left + border + viewBounds.width / 2, position.x);
+	position.x = std::min(mWorldBounds.left + mWorldBounds.width - border - viewBounds.width / 2, position.x);
+	position.y = std::max(mWorldBounds.top + border + viewBounds.height / 2, position.y);
+	position.y = std::min(mWorldBounds.top + mWorldBounds.height - border - viewBounds.height / 2, position.y);
+
+	mPlayerAvatar->setPosition(position);
+	mWorldView.setCenter(position);
 }
 
 CommandQueue& World::getCommandQueue() {
