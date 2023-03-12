@@ -35,12 +35,14 @@ void Player::handleRealtimeInput(CommandQueue &commands) {
 		movement.y /= sqrt(2);
 	}
 
-	Command move;
-	move.category = Category::Player;
-	move.action = derivedAction<Avatar>(BodyMover(movement.x, movement.y));
+	if (movement.x || movement.y) {
+		Command move;
+		move.category = Category::Player;
+		move.action = derivedAction<Avatar>(BodyMover(movement.x, movement.y));
 
-	commands.push(move);
+		commands.push(move);
 	}
+}
 
 void Player::handleEvent(const sf::Event &event, CommandQueue &commands) {
 	if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::P) {
