@@ -13,7 +13,7 @@
 World::World(sf::RenderWindow& window):
 	mWindow(window),
 	mWorldView(window.getDefaultView()),
-	mWorldBounds(0.0f, 0.0f, 3472.f, 1472.f), // hardcoded image resolution
+	mWorldBounds(0.0f, 0.0f, 0.f, 0.f),
 	mSpawnPosition(mWorldView.getSize().x / 2.f, mWorldView.getSize().y / 2.f),
 	mPlayerAvatar(nullptr),
 	mPlayerSpeed(450.f)
@@ -39,6 +39,8 @@ void World::buildScene() {
 	}
 
 	sf::Texture& texture = mTextures.get(Textures::Background);
+	mWorldBounds.width = texture.getSize().x + 32.f;
+	mWorldBounds.height = texture.getSize().y + 32.f;
 	sf::IntRect textureRect(mWorldBounds);
 	//texture.setRepeated(true); // uncomment if you have pattern-background
 
