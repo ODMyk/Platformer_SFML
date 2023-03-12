@@ -73,13 +73,13 @@ void World::update(sf::Time timedelta) {
 	//	mWorldView.move(0, movement.y * timedelta.asSeconds());
 	//}
 
-	mWorldView.setCenter(mPlayerAvatar->getPosition());
 
 	while (!mCommandQueue.isEmpty()) {
 		mSceneGraph.onCommand(mCommandQueue.pop(), timedelta);
 	}
 
 	mSceneGraph.update(timedelta);
+	mWorldView.setCenter(mPlayerAvatar->getPosition());
 }
 
 CommandQueue& World::getCommandQueue() {
