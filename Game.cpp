@@ -47,10 +47,20 @@ void Game::processInput() {
 
 	sf::Event event;
 	while (mWindow.pollEvent(event)) {
-		mPlayer.handleEvent(event, commands);
+		if (!mIsPaused) {
+			mPlayer.handleEvent(event, commands);
+		}
 
 		if (event.type == sf::Event::Closed) {
 			mWindow.close();
+		}
+
+		if (event.type == sf::Event::LostFocus) {
+			mIsPaused = true;
+		}
+
+		if (event.type == sf::Event::GainedFocus) {
+			mIsPaused = false;
 		}
 
 		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
@@ -58,7 +68,9 @@ void Game::processInput() {
 		}
 	}
 
-	mPlayer.handleRealtimeInput(commands);
+	if (!mIsPaused) {
+		mPlayer.handleRealtimeInput(commands);
+	}
 }
 
 void Game::update(sf::Time timedelta) {
