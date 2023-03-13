@@ -40,6 +40,7 @@ private:
 	void applyPendingChanges();
 
 	struct PendingChange {
+		explicit PendingChange(Action action, States::ID stateID = States::None);
 		Action action;
 		States::ID stateID;
 	};
