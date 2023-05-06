@@ -26,8 +26,8 @@ World::World(sf::RenderWindow& window):
 
 void World::loadTextures() {
 	mTextures.load(Textures::Grass, "resources/img/Grass1.png");
-	mTextures.load(Textures::Background, "resources/img/Background.jpg");
-	mTextures.load(Textures::Avatar, "resources/img/Player.png");
+	mTextures.load(Textures::Background, "resources/img/Background.png");
+	mTextures.load(Textures::Avatar, "resources/img/Player.jpg");
 }
 
 void World::buildScene() {
@@ -39,8 +39,8 @@ void World::buildScene() {
 	}
 
 	sf::Texture& texture = mTextures.get(Textures::Background);
-	mWorldBounds.width = texture.getSize().x + 32.f;
-	mWorldBounds.height = texture.getSize().y + 32.f;
+	mWorldBounds.width = texture.getSize().x;
+	mWorldBounds.height = texture.getSize().y;
 	sf::IntRect textureRect(mWorldBounds);
 	//texture.setRepeated(true); // uncomment if you have pattern-background
 
@@ -91,7 +91,7 @@ void World::update(sf::Time timedelta) {
 	position.y = std::max(mWorldBounds.top + border + viewBounds.height / 2, position.y);
 	position.y = std::min(mWorldBounds.top + mWorldBounds.height - border - viewBounds.height / 2, position.y);
 
-	mPlayerAvatar->setPosition(position);
+	//mPlayerAvatar->setPosition(position);
 	mWorldView.setCenter(position);
 }
 
