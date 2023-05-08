@@ -3,15 +3,23 @@
 #include "ResourceHolder.hpp"
 
 namespace sf {
-	class Texture;
-}
+class Texture;
+class Font;
+} // namespace sf
 
 namespace Textures {
-	enum ID {
-		Grass,
-		Avatar,
-		Background,
-	};
+enum ID {
+  Grass,
+  Avatar,
+  Background,
+};
 }
 
+namespace Fonts {
+enum ID {
+  Main,
+};
+};
+
 typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;
+typedef ResourceHolder<sf::Font, Fonts::ID> FontHolder;
