@@ -12,6 +12,7 @@ enum ID {
   Grass,
   Avatar,
   Background,
+  TitleScreen,
 };
 }
 

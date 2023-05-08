@@ -86,10 +86,10 @@ void World::update(sf::Time timedelta) {
 
 	const float border = 32.f;
 	sf::Vector2f position = mPlayerAvatar->getPosition();
-	position.x = std::max(mWorldBounds.left + border + viewBounds.width / 2, position.x);
-	position.x = std::min(mWorldBounds.left + mWorldBounds.width - border - viewBounds.width / 2, position.x);
-	position.y = std::max(mWorldBounds.top + border + viewBounds.height / 2, position.y);
-	position.y = std::min(mWorldBounds.top + mWorldBounds.height - border - viewBounds.height / 2, position.y);
+	//position.x = std::max(mWorldBounds.left + border + viewBounds.width / 2, position.x);
+	//position.x = std::min(mWorldBounds.left + mWorldBounds.width - border - viewBounds.width / 2, position.x);
+	//position.y = std::max(mWorldBounds.top + border + viewBounds.height / 2, position.y);
+	//position.y = std::min(mWorldBounds.top + mWorldBounds.height - border - viewBounds.height / 2, position.y);
 
 	//mPlayerAvatar->setPosition(position);
 	mWorldView.setCenter(position);

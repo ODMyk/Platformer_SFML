@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MATH_HPP
+#define MATH_HPP
 
 namespace Math {
 	template<typename T>
@@ -6,3 +7,5 @@ namespace Math {
 		return (n > 0) - (n < 0);
 	}
 }
+
+#endif
