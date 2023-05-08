@@ -35,7 +35,7 @@ public:
   virtual bool handleEvent(const sf::Event &event) = 0;
 
 protected:
-  void requestStacPush(States::ID stateID);
+  void requestStackPush(States::ID stateID);
   void requestStackPop();
   void requestStateClear();
 
