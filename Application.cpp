@@ -10,8 +10,8 @@
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Application::Application()
-    : mWindow(sf::VideoMode(1280, 720), "States", sf::Style::Close), mTextures(),
-      mFonts(), mPlayer(),
+    : mWindow(sf::VideoMode(1280, 720), "States", sf::Style::Close),
+      mTextures(), mFonts(), mPlayer(),
       mStateStack(State::Context(mWindow, mTextures, mFonts, mPlayer)),
       mStatisticsText(), mStatisticsUpdateTime(), mStatisticsNumFrames(0) {
   mWindow.setKeyRepeatEnabled(false);
