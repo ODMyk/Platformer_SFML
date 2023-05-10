@@ -13,6 +13,9 @@ enum ID {
   Avatar,
   Background,
   TitleScreen,
+  ButtonNormal,
+  ButtonPressed,
+  ButtonSelected,
 };
 }
 
