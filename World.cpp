@@ -13,8 +13,7 @@
 World::World(sf::RenderWindow &window)
     : mWindow(window), mWorldView(window.getDefaultView()),
       mWorldBounds(0.0f, 0.0f, 0.f, 0.f),
-      mSpawnPosition(mWorldView.getSize().x / 2.f,
-                     mWorldView.getSize().y / 2.f),
+      mSpawnPosition(160.f, 180.f),
       mPlayerAvatar(nullptr), mPlayerSpeed(450.f) {
   loadTextures();
   buildScene();
