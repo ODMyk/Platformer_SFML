@@ -27,6 +27,9 @@ void World::loadTextures() {
   mTextures.load(Textures::Grass, "resources/img/Grass1.png");
   mTextures.load(Textures::Background, "resources/img/Background.png");
   mTextures.load(Textures::Avatar, "resources/img/Player.jpg");
+  mTextures.load(Textures::ButtonNormal, "resources/img/Button0.png");
+  mTextures.load(Textures::ButtonSelected, "resources/img/Button1.png");
+  mTextures.load(Textures::ButtonPressed, "resources/img/Button2.png");
 }
 
 void World::buildScene() {
