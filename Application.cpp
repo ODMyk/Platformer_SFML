@@ -2,6 +2,7 @@
 #include "GameState.hpp"
 #include "MenuState.hpp"
 #include "PauseState.hpp"
+#include "SettingsState.hpp"
 #include "State.hpp"
 #include "StateIdentifiers.hpp"
 #include "TitleState.hpp"
@@ -18,6 +19,9 @@ Application::Application()
 
   mFonts.load(Fonts::Main, "resources/fonts/impact.ttf");
   mTextures.load(Textures::TitleScreen, "resources/img/TitleScreen.png");
+  mTextures.load(Textures::ButtonNormal, "resources/img/Button0.png");
+  mTextures.load(Textures::ButtonSelected, "resources/img/Button1.png");
+  mTextures.load(Textures::ButtonPressed, "resources/img/Button2.png");
 
   mStatisticsText.setFont(mFonts.get(Fonts::Main));
   mStatisticsText.setPosition(5.f, 5.f);
@@ -88,4 +92,5 @@ void Application::registerStates() {
   mStateStack.registerState<MenuState>(States::Menu);
   mStateStack.registerState<GameState>(States::Game);
   mStateStack.registerState<PauseState>(States::Pause);
+  mStateStack.registerState<SettingsState>(States::Settings);
 }

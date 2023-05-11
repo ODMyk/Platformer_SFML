@@ -100,9 +100,11 @@ void Player::handleEvent(const sf::Event &event, CommandQueue &commands) {
 }
 
 void Player::assignKey(Action action, sf::Keyboard::Key key) {
-  for (auto itr = mKeyBinding.begin(); itr != mKeyBinding.end(); ++itr) {
+  for (auto itr = mKeyBinding.begin(); itr != mKeyBinding.end();) {
     if (itr->second == action) {
-      mKeyBinding.erase(itr);
+      mKeyBinding.erase(itr++); // we have to use such approach because if we simply use increment in loop declaration, the iterator may broke and cause seg fault
+    } else {
+      ++itr;
     }
   }
   mKeyBinding[key] = action;

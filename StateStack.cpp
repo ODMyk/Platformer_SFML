@@ -6,7 +6,6 @@ StateStack::StateStack(State::Context context)
     : mStack(), mPendingList(), mContext(context), mFactories() {}
 
 void StateStack::update(sf::Time dt) {
-  // Iterate from top to bottom, stop as soon as update() returns false
   for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr) {
     if (!(*itr)->update(dt))
       break;
@@ -16,14 +15,12 @@ void StateStack::update(sf::Time dt) {
 }
 
 void StateStack::draw() {
-  // Draw all active states from bottom to top
   for (State::Ptr &state : mStack) {
     state->draw();
   }
 }
 
 void StateStack::handleEvent(const sf::Event &event) {
-  // Iterate from top to bottom, stop as soon as handleEvent() returns false
   for (auto itr = mStack.rbegin(); itr != mStack.rend(); ++itr) {
     if (!(*itr)->handleEvent(event))
       break;
