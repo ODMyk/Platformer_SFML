@@ -3,7 +3,7 @@
 #include "Avatar.hpp"
 #include "Category.hpp"
 #include "Command.hpp"
-#include "Player.hpp"
+#include "Controller.hpp"
 #include "SFML/Window/Keyboard.hpp"
 #include <cmath>
 
@@ -16,12 +16,12 @@ struct BodyMover {
   sf::Vector2f velocity;
 };
 
-Player::Player() {
-  mKeyBinding[sf::Keyboard::W] = MoveUp;
-  mKeyBinding[sf::Keyboard::S] = MoveDown;
-  mKeyBinding[sf::Keyboard::A] = MoveLeft;
-  mKeyBinding[sf::Keyboard::D] = MoveRight;
-  mKeyBinding[sf::Keyboard::P] = PrintPosition;
+Controller::Controller(Keybindings& binds): mBinds(binds) {
+  mKeyBinding[mBinds.getAssignedKey(Keybindings::Events::Up)] = MoveUp;
+  mKeyBinding[mBinds.getAssignedKey(Keybindings::Events::Down)] = MoveDown;
+  mKeyBinding[mBinds.getAssignedKey(Keybindings::Events::Left)] = MoveLeft;
+  mKeyBinding[mBinds.getAssignedKey(Keybindings::Events::Right)] = MoveRight;
+  mKeyBinding[mBinds.getAssignedKey(Keybindings::Events::Interact)] = PrintPosition;
 
   initializeActions();
 
@@ -30,7 +30,7 @@ Player::Player() {
   }
 }
 
-void Player::initializeActions() {
+void Controller::initializeActions() {
   const float speed = 450.f;
 
   mActionBinding[MoveUp].action = derivedAction<Avatar>(BodyMover(0.f, -speed));
@@ -46,7 +46,7 @@ void Player::initializeActions() {
   };
 }
 
-void Player::handleRealtimeInput(CommandQueue &commands) {
+void Controller::handleRealtimeInput(CommandQueue &commands) {
   const float playerSpeed = 450.f;
   const float reducer = playerSpeed * (1.f - 1.f / sqrt(2.f));
   std::map<Action, bool> actions;
@@ -90,7 +90,7 @@ void Player::handleRealtimeInput(CommandQueue &commands) {
   }
 }
 
-void Player::handleEvent(const sf::Event &event, CommandQueue &commands) {
+void Controller::handleEvent(const sf::Event &event, CommandQueue &commands) {
   if (event.type == sf::Event::KeyPressed) {
     auto found = mKeyBinding.find(event.key.code);
     if (found != mKeyBinding.end() && !isRealtimeAction(found->second)) {
@@ -99,18 +99,7 @@ void Player::handleEvent(const sf::Event &event, CommandQueue &commands) {
   }
 }
 
-void Player::assignKey(Action action, sf::Keyboard::Key key) {
-  for (auto itr = mKeyBinding.begin(); itr != mKeyBinding.end();) {
-    if (itr->second == action) {
-      mKeyBinding.erase(itr++); // we have to use such approach because if we simply use increment in loop declaration, the iterator may broke and cause seg fault
-    } else {
-      ++itr;
-    }
-  }
-  mKeyBinding[key] = action;
-}
-
-sf::Keyboard::Key Player::getAssignedKey(Action action) const {
+sf::Keyboard::Key Controller::getAssignedKey(Action action) const {
   for (auto pair : mKeyBinding) {
     if (pair.second == action) {
       return pair.first;
@@ -119,7 +108,7 @@ sf::Keyboard::Key Player::getAssignedKey(Action action) const {
   return sf::Keyboard::Unknown;
 }
 
-bool Player::isRealtimeAction(Action action) {
+bool Controller::isRealtimeAction(Action action) {
   switch (action) {
   case MoveUp:
   case MoveDown:

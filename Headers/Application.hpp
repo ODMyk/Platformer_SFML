@@ -1,7 +1,7 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include "Player.hpp"
+#include "Keybindings.hpp"
 #include "ResourceHolder.hpp"
 #include "ResourceIdentifiers.hpp"
 #include "StateStack.hpp"
@@ -29,7 +29,7 @@ private:
   sf::RenderWindow mWindow;
   TextureHolder mTextures;
   FontHolder mFonts;
-  Player mPlayer;
+  Keybindings mBinds;
 
   StateStack mStateStack;
 

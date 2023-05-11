@@ -1,5 +1,5 @@
 #include "Application.hpp"
-#include "GameState.hpp"
+#include "Level1.hpp"
 #include "MenuState.hpp"
 #include "PauseState.hpp"
 #include "SettingsState.hpp"
@@ -12,8 +12,8 @@ const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 
 Application::Application()
     : mWindow(sf::VideoMode(1280, 720), "Cool Title", sf::Style::Close),
-      mTextures(), mFonts(), mPlayer(),
-      mStateStack(State::Context(mWindow, mTextures, mFonts, mPlayer)),
+      mTextures(), mFonts(), mBinds(),
+      mStateStack(State::Context(mWindow, mTextures, mFonts, mBinds)),
       mStatisticsText(), mStatisticsUpdateTime(), mStatisticsNumFrames(0) {
   mWindow.setKeyRepeatEnabled(false);
 
@@ -90,7 +90,7 @@ void Application::updateStatistics(sf::Time dt) {
 void Application::registerStates() {
   mStateStack.registerState<TitleState>(States::Title);
   mStateStack.registerState<MenuState>(States::Menu);
-  mStateStack.registerState<GameState>(States::Game);
+  mStateStack.registerState<Level1>(States::Level1S);
   mStateStack.registerState<PauseState>(States::Pause);
   mStateStack.registerState<SettingsState>(States::Settings);
 }
