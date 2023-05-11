@@ -25,6 +25,7 @@ PauseState::PauseState(StateStack &stack, Context context)
                             0.4f * windowSize.y + 75);
   returnButton->setText("Return");
   returnButton->setCallback([this]() { requestStackPop(); });
+  returnButton->setTextColor(sf::Color::Black);
 
   auto backToMenuButton =
       std::make_shared<GUI::Button>(*context.fonts, *context.textures);
@@ -35,6 +36,7 @@ PauseState::PauseState(StateStack &stack, Context context)
     requestStateClear();
     requestStackPush(States::Menu);
   });
+  backToMenuButton->setTextColor(sf::Color::Black);
 
   mGUIContainer.pack(returnButton);
   mGUIContainer.pack(backToMenuButton);

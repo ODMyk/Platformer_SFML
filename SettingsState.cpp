@@ -42,6 +42,7 @@ SettingsState::SettingsState(StateStack &stack, Context context)
   backButton->setPosition(540.f, 425.f);
   backButton->setText("Back");
   backButton->setCallback(std::bind(&SettingsState::requestStackPop, this));
+  backButton->setTextColor(sf::Color::Black);
 
   mGUIContainer.pack(backButton);
 }
@@ -96,6 +97,7 @@ void SettingsState::addButtonLabel(Player::Action action, float y,
   mBindingButtons[action]->setPosition(450.f, y);
   mBindingButtons[action]->setText(text);
   mBindingButtons[action]->setToggle(true);
+  mBindingButtons[action]->setTextColor(sf::Color::Black);
 
   mBindingLabels[action] = std::make_shared<GUI::Label>("", *context.fonts);
   mBindingLabels[action]->setPosition(680.f, y + 15.f);

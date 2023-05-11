@@ -1,5 +1,5 @@
-#include "Button.hpp"
 #include "MenuState.hpp"
+#include "Button.hpp"
 #include "ResourceHolder.hpp"
 #include "Utility.hpp"
 
@@ -31,6 +31,10 @@ MenuState::MenuState(StateStack &stack, Context context)
   exitButton->setPosition(540, 550);
   exitButton->setText("Exit");
   exitButton->setCallback([this]() { requestStackPop(); });
+
+  playButton->setTextColor(sf::Color::Black);
+  settingsButton->setTextColor(sf::Color::Black);
+  exitButton->setTextColor(sf::Color::Black);
 
   mGUIContainer.pack(playButton);
   mGUIContainer.pack(settingsButton);
