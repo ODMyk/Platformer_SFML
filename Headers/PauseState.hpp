@@ -1,6 +1,7 @@
 #ifndef PAUSESTATE_HPP
 #define PAUSESTATE_HPP
 
+#include "Container.hpp"
 #include "State.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
@@ -17,7 +18,7 @@ public:
 private:
   sf::Sprite mBackgroundSprite;
   sf::Text mPausedText;
-  sf::Text mInstructionText;
+  GUI::Container mGUIContainer;
 };
 
 #endif
