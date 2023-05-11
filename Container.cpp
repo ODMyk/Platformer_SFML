@@ -20,7 +20,7 @@ bool Container::isSelectable() const { return false; }
 void Container::handleEvent(const sf::Event &event) {
   if (hasSelection() && mChildren[mSelectedChild]->isActive()) {
     mChildren[mSelectedChild]->handleEvent(event);
-  } else if (event.type == sf::Event::KeyReleased) {
+  } else if (event.type == sf::Event::KeyPressed) {
     if (event.key.code == sf::Keyboard::W ||
         event.key.code == sf::Keyboard::Up) {
       selectPrevious();
