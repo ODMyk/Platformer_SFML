@@ -1,4 +1,5 @@
 #include "SettingsState.hpp"
+#include "Keybindings.hpp"
 #include "ResourceHolder.hpp"
 #include "Utility.hpp"
 
@@ -29,11 +30,11 @@ SettingsState::SettingsState(StateStack &stack, Context context)
     : State(stack, context), mGUIContainer() {
   mBackgroundSprite.setTexture(context.textures->get(Textures::TitleScreen));
 
-  addButtonLabel(Player::MoveLeft, 150.f, "Move Left", context);
-  addButtonLabel(Player::MoveRight, 200.f, "Move Right", context);
-  addButtonLabel(Player::MoveUp, 250.f, "Move Up", context);
-  addButtonLabel(Player::MoveDown, 300.f, "Move Down", context);
-  addButtonLabel(Player::PrintPosition, 350.f, "Print Position", context);
+  addButtonLabel(Keybindings::Left, 150.f, "Move Left", context);
+  addButtonLabel(Keybindings::Right, 200.f, "Move Right", context);
+  addButtonLabel(Keybindings::Up, 250.f, "Move Up", context);
+  addButtonLabel(Keybindings::Down, 300.f, "Move Down", context);
+  addButtonLabel(Keybindings::Interact, 350.f, "Interact", context);
 
   updateLabels();
 
@@ -59,12 +60,12 @@ bool SettingsState::update(sf::Time) { return true; }
 bool SettingsState::handleEvent(const sf::Event &event) {
   bool isKeyBinding = false;
 
-  for (std::size_t action = 0; action < Player::ActionCount; ++action) {
+  for (std::size_t action = 0; action < Keybindings::KeyCount; ++action) {
     if (mBindingButtons[action]->isActive()) {
       isKeyBinding = true;
       if (event.type == sf::Event::KeyPressed) {
-        getContext().player->assignKey(static_cast<Player::Action>(action),
-                                       event.key.code);
+        getContext().binds->assignKey(event.key.code,
+                                      static_cast<Keybindings::Events>(action));
         mBindingButtons[action]->deactivate();
       }
       break;
@@ -73,24 +74,23 @@ bool SettingsState::handleEvent(const sf::Event &event) {
 
   if (isKeyBinding) {
     updateLabels();
-  }
-  else
+  } else
     mGUIContainer.handleEvent(event);
 
   return false;
 }
 
 void SettingsState::updateLabels() {
-  Player &player = *getContext().player;
+  Keybindings &player = *getContext().binds;
 
-  for (std::size_t i = 0; i < Player::ActionCount; ++i) {
+  for (std::size_t i = 0; i < Keybindings::KeyCount; ++i) {
     sf::Keyboard::Key key =
-        player.getAssignedKey(static_cast<Player::Action>(i));
+        player.getAssignedKey(static_cast<Keybindings::Events>(i));
     mBindingLabels[i]->setText(keyNames[int(key) + 1]);
   }
 }
 
-void SettingsState::addButtonLabel(Player::Action action, float y,
+void SettingsState::addButtonLabel(Keybindings::Events action, float y,
                                    const std::string &text, Context context) {
   mBindingButtons[action] =
       std::make_shared<GUI::Button>(*context.fonts, *context.textures);

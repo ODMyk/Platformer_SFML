@@ -9,7 +9,6 @@ class Font;
 
 namespace Textures {
 enum ID {
-  Grass,
   Avatar,
   Background,
   TitleScreen,

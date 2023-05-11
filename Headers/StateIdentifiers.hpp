@@ -6,7 +6,7 @@ enum ID {
   None,
   Title,
   Menu,
-  Game,
+  Level1S,
   Loading,
   Pause,
   Settings,

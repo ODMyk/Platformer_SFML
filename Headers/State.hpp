@@ -13,18 +13,18 @@ class RenderWindow;
 }
 
 class StateStack;
-class Player;
+class Keybindings;
 
 class State {
 public:
   typedef std::unique_ptr<State> Ptr;
   struct Context {
     Context(sf::RenderWindow &window, TextureHolder &textures,
-            FontHolder &fonts, Player &player);
+            FontHolder &fonts, Keybindings &binds);
     sf::RenderWindow *window;
     TextureHolder *textures;
     FontHolder *fonts;
-    Player *player;
+    Keybindings *binds;
   };
 
   State(StateStack &stack, Context context);

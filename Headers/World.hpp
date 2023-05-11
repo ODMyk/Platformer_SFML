@@ -14,13 +14,13 @@
 class World : private sf::NonCopyable {
 public:
   explicit World(sf::RenderWindow &window);
-  void update(sf::Time timedelta);
-  void draw();
+  virtual void update(sf::Time timedelta);
+  virtual void draw();
   CommandQueue &getCommandQueue();
 
-private:
-  void loadTextures();
-  void buildScene();
+protected:
+  virtual void loadTextures();
+  virtual void buildScene();
 
   enum Layer { Background, Foreground, UI, LayerCount };
 
@@ -32,7 +32,6 @@ private:
   sf::FloatRect mWorldBounds;
   sf::Vector2f mSpawnPosition;
   Avatar *mPlayerAvatar;
-  float mPlayerSpeed;
   CommandQueue mCommandQueue;
 };
 

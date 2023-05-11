@@ -2,8 +2,8 @@
 #include "StateStack.hpp"
 
 State::Context::Context(sf::RenderWindow &window, TextureHolder &textures,
-                        FontHolder &fonts, Player &player)
-    : window(&window), textures(&textures), fonts(&fonts), player(&player) {}
+                        FontHolder &fonts, Keybindings &binds)
+    : window(&window), textures(&textures), fonts(&fonts), binds(&binds) {}
 
 State::State(StateStack &stack, Context context)
     : mStack(&stack), mContext(context) {}

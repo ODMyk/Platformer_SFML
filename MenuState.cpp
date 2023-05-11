@@ -17,7 +17,7 @@ MenuState::MenuState(StateStack &stack, Context context)
   playButton->setText("Play");
   playButton->setCallback([this]() {
     requestStackPop();
-    requestStackPush(States::Game);
+    requestStackPush(States::Level1S);
   });
 
   auto settingsButton =

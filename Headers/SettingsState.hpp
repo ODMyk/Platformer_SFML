@@ -4,7 +4,7 @@
 #include "Button.hpp"
 #include "Container.hpp"
 #include "Label.hpp"
-#include "Player.hpp"
+#include "Keybindings.hpp"
 #include "State.hpp"
 
 #include <SFML/Graphics/Sprite.hpp>
@@ -22,14 +22,14 @@ public:
 
 private:
   void updateLabels();
-  void addButtonLabel(Player::Action action, float y, const std::string &text,
+  void addButtonLabel(Keybindings::Events action, float y, const std::string &text,
                       Context context);
 
 private:
   sf::Sprite mBackgroundSprite;
   GUI::Container mGUIContainer;
-  std::array<GUI::Button::Ptr, Player::ActionCount> mBindingButtons;
-  std::array<GUI::Label::Ptr, Player::ActionCount> mBindingLabels;
+  std::array<GUI::Button::Ptr, Keybindings::KeyCount> mBindingButtons;
+  std::array<GUI::Label::Ptr, Keybindings::KeyCount> mBindingLabels;
 };
 
 #endif
