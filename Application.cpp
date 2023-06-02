@@ -1,12 +1,12 @@
-#include "Application.hpp"
-#include "Level1.hpp"
-#include "MenuState.hpp"
-#include "PauseState.hpp"
-#include "SettingsState.hpp"
-#include "State.hpp"
-#include "StateIdentifiers.hpp"
-#include "TitleState.hpp"
-#include "Utility.hpp"
+#include "Headers/Application.hpp"
+#include "Headers/Level1.hpp"
+#include "Headers/MenuState.hpp"
+#include "Headers/PauseState.hpp"
+#include "Headers/SettingsState.hpp"
+#include "Headers/State.hpp"
+#include "Headers/StateIdentifiers.hpp"
+#include "Headers/TitleState.hpp"
+#include "Headers/Utility.hpp"
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 

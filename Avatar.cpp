@@ -1,4 +1,4 @@
-#include "Avatar.hpp"
+#include "Headers/Avatar.hpp"
 
 Textures::ID toTextureID(Avatar::Type type) {
   switch (type) {
@@ -31,4 +31,9 @@ unsigned int Avatar::getCategory() const {
   default:
     return Category::Scene;
   }
+}
+
+sf::FloatRect Avatar::GetBounds()
+{
+    return mSprite.getGlobalBounds();
 }

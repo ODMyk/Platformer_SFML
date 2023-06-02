@@ -18,6 +18,8 @@ public:
                            sf::RenderStates states) const override;
   unsigned int getCategory() const override;
 
+  sf::FloatRect GetBounds();
+
 private:
   Type mType;
   sf::Sprite mSprite;

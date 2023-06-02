@@ -1,4 +1,4 @@
-#include "ParallelTask.hpp"
+#include "Headers/ParallelTask.hpp"
 
 ParallelTask::ParallelTask()
     : mThread(&ParallelTask::runTask, this), mFinished(false) {}

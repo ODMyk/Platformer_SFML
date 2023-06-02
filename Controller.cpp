@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "Avatar.hpp"
-#include "Category.hpp"
-#include "Command.hpp"
-#include "Controller.hpp"
+#include "Headers/Avatar.hpp"
+#include "Headers/Category.hpp"
+#include "Headers/Command.hpp"
+#include "Headers/Controller.hpp"
 #include "SFML/Window/Keyboard.hpp"
 #include <cmath>
 

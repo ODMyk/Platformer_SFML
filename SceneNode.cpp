@@ -1,4 +1,4 @@
-#include "SceneNode.hpp"
+#include "Headers/SceneNode.hpp"
 
 void SceneNode::attachChild(Ptr child) {
   child->mParent = this;
