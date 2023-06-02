@@ -1,4 +1,5 @@
 dst/
+report/
 build/
 *.pdf
 *.clangd
