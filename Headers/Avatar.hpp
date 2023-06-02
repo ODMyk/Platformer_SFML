@@ -13,10 +13,12 @@ public:
   enum Type {
     standard,
   };
-  explicit Avatar(Type type, const TextureHolder &textures, sf::Vector2f hitbox);
+  explicit Avatar(Type type, const TextureHolder &textures);
   virtual void drawCurrent(sf::RenderTarget &target,
                            sf::RenderStates states) const override;
   unsigned int getCategory() const override;
+
+  sf::FloatRect GetBounds();
 
 private:
   Type mType;

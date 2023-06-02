@@ -1,7 +1,7 @@
-#include "SettingsState.hpp"
-#include "Keybindings.hpp"
-#include "ResourceHolder.hpp"
-#include "Utility.hpp"
+#include "Headers/SettingsState.hpp"
+#include "Headers/Keybindings.hpp"
+#include "Headers/ResourceHolder.hpp"
+#include "Headers/Utility.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <string>

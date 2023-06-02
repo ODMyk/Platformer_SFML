@@ -15,6 +15,7 @@ enum ID {
   ButtonNormal,
   ButtonPressed,
   ButtonSelected,
+  Foreground_
 };
 }
 

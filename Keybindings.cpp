@@ -1,4 +1,4 @@
-#include "Keybindings.hpp"
+#include "Headers/Keybindings.hpp"
 
 Keybindings::Keybindings() {
   keys.push_back(sf::Keyboard::W);

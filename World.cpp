@@ -3,12 +3,12 @@
 #include <iostream>
 #include <memory>
 
-#include "Avatar.hpp"
-#include "Math.hpp"
-#include "ResourceIdentifiers.hpp"
+#include "Headers/Avatar.hpp"
+#include "Headers/Math.hpp"
+#include "Headers/ResourceIdentifiers.hpp"
 #include "SFML/System/Vector2.hpp"
-#include "SpriteNode.hpp"
-#include "World.hpp"
+#include "Headers/SpriteNode.hpp"
+#include "Headers/World.hpp"
 
 World::World(sf::RenderWindow &window)
     : mWindow(window), mWorldView(window.getDefaultView()),

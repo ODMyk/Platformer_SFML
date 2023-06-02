@@ -1,4 +1,4 @@
-#include "Avatar.hpp"
+#include "Headers/Avatar.hpp"
 
 Textures::ID toTextureID(Avatar::Type type) {
   switch (type) {
@@ -11,8 +11,8 @@ Textures::ID toTextureID(Avatar::Type type) {
   }
 }
 
-Avatar::Avatar(Type type, const TextureHolder &textures, sf::Vector2f hb)
-    : Entity(hb), mType(type), mSprite() {
+Avatar::Avatar(Type type, const TextureHolder &textures)
+    : mType(type), mSprite() {
   mSprite.setTexture(textures.get(toTextureID(type)));
   sf::FloatRect bounds = mSprite.getLocalBounds();
   mSprite.setOrigin(bounds.width / 2.f, bounds.height / 2.f);
@@ -31,4 +31,9 @@ unsigned int Avatar::getCategory() const {
   default:
     return Category::Scene;
   }
+}
+
+sf::FloatRect Avatar::GetBounds()
+{
+    return mSprite.getGlobalBounds();
 }

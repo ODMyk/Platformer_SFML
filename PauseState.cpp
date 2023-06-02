@@ -1,7 +1,7 @@
-#include "PauseState.hpp"
-#include "Button.hpp"
-#include "ResourceHolder.hpp"
-#include "Utility.hpp"
+#include "Headers/PauseState.hpp"
+#include "Headers/Button.hpp"
+#include "Headers/ResourceHolder.hpp"
+#include "Headers/Utility.hpp"
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>

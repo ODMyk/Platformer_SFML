@@ -1,6 +1,6 @@
-#include "ResourceHolder.hpp"
-#include "TitleState.hpp"
-#include "Utility.hpp"
+#include "Headers/ResourceHolder.hpp"
+#include "Headers/TitleState.hpp"
+#include "Headers/Utility.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
 

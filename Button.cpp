@@ -1,5 +1,5 @@
-#include "Button.hpp"
-#include "Utility.hpp"
+#include "Headers/Button.hpp"
+#include "Headers/Utility.hpp"
 
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
