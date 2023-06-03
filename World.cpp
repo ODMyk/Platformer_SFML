@@ -13,7 +13,7 @@
 World::World(sf::RenderWindow &window)
     : mWindow(window), mWorldView(window.getDefaultView()),
       mWorldBounds(0.0f, 0.0f, 0.f, 0.f),
-      mSpawnPosition(160.f, 180.f),
+      mSpawnPosition(160.f, 160.f),
       mPlayerAvatar(nullptr) {
   loadTextures();
   buildScene();
@@ -37,6 +37,7 @@ void World::buildScene() {
 
 void World::draw() {
   mWindow.setView(mWorldView);
+  mWindow.clear(sf::Color(0, 0, 0));
   mWindow.draw(mSceneGraph);
 }
 

@@ -15,7 +15,12 @@ enum ID {
   ButtonNormal,
   ButtonPressed,
   ButtonSelected,
-  Foreground_
+  Foreground_,
+  SnakeHead,
+  SnakeTailUp,
+  SnakeTailDown,
+  SnakeTailRight,
+  SnakeTailLeft
 };
 }
 

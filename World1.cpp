@@ -13,7 +13,7 @@ void World1::draw() { World::draw(); }
 
 void World1::loadTextures() {
   mTextures.load(Textures::Background, "resources/img/Background.png");
-  mTextures.load(Textures::Avatar, "resources/img/Player.png");
+  mTextures.load(Textures::Avatar, "resources/img/Player.jpg");
   mTextures.load(Textures::Foreground_, "resources/img/AllForNothing2.png");
 }
 
@@ -41,6 +41,4 @@ void World1::buildScene() {
   std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture));
   backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
   mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
-
-  std::cout<<mWorldBounds.left<<" "<<mWorldBounds.top<<"\n";
 }

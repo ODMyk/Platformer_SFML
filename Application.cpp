@@ -2,6 +2,11 @@
 #include "Headers/Level1.hpp"
 #include "Headers/MenuState.hpp"
 #include "Headers/PauseState.hpp"
+#include "Headers/GamesState.hpp"
+#include "Headers/SnakeMenuState.hpp"
+#include "Headers/SnakeGameState.hpp"
+#include "Headers/SnakeGameOverState.hpp"
+
 #include "Headers/SettingsState.hpp"
 #include "Headers/State.hpp"
 #include "Headers/StateIdentifiers.hpp"
@@ -93,4 +98,8 @@ void Application::registerStates() {
   mStateStack.registerState<Level1>(States::Level1S);
   mStateStack.registerState<PauseState>(States::Pause);
   mStateStack.registerState<SettingsState>(States::Settings);
+  mStateStack.registerState<GamesState>(States::Games);
+  mStateStack.registerState<SnakeMenuState>(States::SnakeMenu);
+  mStateStack.registerState<SnakeGameState>(States::SnakeGame);
+  mStateStack.registerState<SnakeGameOverState>(States::SnakeGameOver);
 }

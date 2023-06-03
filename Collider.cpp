@@ -30,7 +30,7 @@ bool Collider::collision(Avatar& pl)
     sf::Vector2f pl_center = {bounds.left+bounds.width/2.f, bounds.top-bounds.height/2.f};
     float intersection_x = abs(pl_center.x-GetCenter().x) - (GetSizeX()/2.f+bounds.width/2.f);
     float intersection_y = abs(pl_center.y-GetCenter().y) - (GetSizeY()/2.f+bounds.height/2.f);
-    if(intersection_x<0 || intersection_y<0)
+    if(intersection_x<0 && intersection_y<0)
     {
         std::cout<<"Collision\n";
         return true;
@@ -43,7 +43,7 @@ bool Collider::collision(sf::FloatRect rect)
     sf::Vector2f rect_center = {rect.left+rect.width/2.f, rect.top-rect.height/2.f};
     float intersection_x = abs(rect_center.x-GetCenter().x) - (GetSizeX()/2.f+rect.width/2.f);
     float intersection_y = abs(rect_center.y-GetCenter().y) - (GetSizeY()/2.f+rect.height/2.f);
-    if(intersection_x<0 || intersection_y<0)
+    if(intersection_x<0 && intersection_y<0)
     {
         std::cout<<"Collision\n";
         return true;
@@ -58,10 +58,10 @@ bool Barrier::collision(Avatar& pl)
     sf::Vector2f pl_center = {bounds.left+bounds.width/2.f, bounds.top-bounds.height/2.f};
     float intersection_x = abs(pl_center.x-GetCenter().x) - (GetSizeX()/2.f+bounds.width/2.f);
     float intersection_y = abs(pl_center.y-GetCenter().y) - (GetSizeY()/2.f+bounds.height/2.f);
-    if(intersection_x<0) {pl.accelerate({-2.f*pl.getVelocity().x, 0});}
-    if(intersection_y<0) {pl.accelerate({0, -2.f*pl.getVelocity().y});}
-    if(intersection_x<0 || intersection_y<0)
+    if(intersection_x<0 && intersection_y<0)
     {
+        pl.accelerate({-2.f*pl.getVelocity().x, 0});
+        pl.accelerate({0, -2.f*pl.getVelocity().y});
         std::cout<<"Collision\n";
         return true;
     }

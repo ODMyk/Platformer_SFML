@@ -10,6 +10,10 @@ enum ID {
   Loading,
   Pause,
   Settings,
+  SnakeMenu,
+  SnakeGame,
+  SnakeGameOver,
+  Games
 };
 }
 

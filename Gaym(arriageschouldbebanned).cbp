@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Gaym(arriageschouldbebanned)" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Gaym(arriageschouldbebanned)" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-std=c++14" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-audio-d" />
+					<Add library="sfml-network-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Gaym(arriageschouldbebanned)" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-audio" />
+					<Add library="sfml-network" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="C:/Users/nazar/OneDrive/Рабочий стол/Програмування/Oval GameDev/SFML-2.5.1/include" />
+		</Compiler>
+		<Linker>
+			<Add directory="C:/Users/nazar/OneDrive/Рабочий стол/Програмування/Oval GameDev/SFML-2.5.1/lib" />
+		</Linker>
+		<Unit filename="Application.cpp" />
+		<Unit filename="Avatar.cpp" />
+		<Unit filename="Button.cpp" />
+		<Unit filename="Collider.cpp" />
+		<Unit filename="Command.cpp" />
+		<Unit filename="CommandQueue.cpp" />
+		<Unit filename="Component.cpp" />
+		<Unit filename="Container.cpp" />
+		<Unit filename="Controller.cpp" />
+		<Unit filename="Entity.cpp" />
+		<Unit filename="Headers/Application.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Avatar.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Button.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Category.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Collider.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Command.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/CommandQueue.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Component.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Container.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Controller.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Entity.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Keybindings.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Label.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Level1.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/LoadingState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Math.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/MenuState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/ParallelTask.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/PauseState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/ResourceHolder.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/ResourceIdentifiers.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SceneNode.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SettingsState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SpriteNode.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/State.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/StateIdentifiers.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/StateStack.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/TitleState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/Utility.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/World.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/World1.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Keybindings.cpp" />
+		<Unit filename="Label.cpp" />
+		<Unit filename="Level1.cpp" />
+		<Unit filename="LoadingState.cpp" />
+		<Unit filename="MenuState.cpp" />
+		<Unit filename="ParallelTask.cpp" />
+		<Unit filename="PauseState.cpp" />
+		<Unit filename="SceneNode.cpp" />
+		<Unit filename="SettingsState.cpp" />
+		<Unit filename="SpriteNode.cpp" />
+		<Unit filename="State.cpp" />
+		<Unit filename="StateStack.cpp" />
+		<Unit filename="TitleState.cpp" />
+		<Unit filename="Utility.cpp" />
+		<Unit filename="World.cpp" />
+		<Unit filename="World1.cpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="resources/fonts/impact.ttf" />
+		<Unit filename="resources/img/Background.jpg" />
+		<Unit filename="resources/img/Background.png" />
+		<Unit filename="resources/img/Button0.png" />
+		<Unit filename="resources/img/Button1.png" />
+		<Unit filename="resources/img/Button2.png" />
+		<Unit filename="resources/img/Grass1.png" />
+		<Unit filename="resources/img/IMG_0920.PNG" />
+		<Unit filename="resources/img/Image1.2png.png" />
+		<Unit filename="resources/img/Player.jpg" />
+		<Unit filename="resources/img/Player.png" />
+		<Unit filename="resources/img/TitleScreen.png" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -39,6 +39,7 @@ public:
   void popState();
   void clearStates();
 
+
   bool isEmpty() const;
 
 private:

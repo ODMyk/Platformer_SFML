@@ -11,13 +11,12 @@ MenuState::MenuState(StateStack &stack, Context context)
   sf::Texture &texture = context.textures->get(Textures::TitleScreen);
   mBackgroundSprite.setTexture(texture);
 
-  auto playButton =
+  auto GamesButton =
       std::make_shared<GUI::Button>(*context.fonts, *context.textures);
-  playButton->setPosition(540, 450);
-  playButton->setText("Play");
-  playButton->setCallback([this]() {
-    requestStackPop();
-    requestStackPush(States::Level1S);
+  GamesButton->setPosition(540, 450);
+  GamesButton->setText("Games");
+  GamesButton->setCallback([this]() {
+    requestStackPush(States::Games);
   });
 
   auto settingsButton =
@@ -32,11 +31,11 @@ MenuState::MenuState(StateStack &stack, Context context)
   exitButton->setText("Exit");
   exitButton->setCallback([this]() { requestStackPop(); });
 
-  playButton->setTextColor(sf::Color::Black);
+  GamesButton->setTextColor(sf::Color::Black);
   settingsButton->setTextColor(sf::Color::Black);
   exitButton->setTextColor(sf::Color::Black);
 
-  mGUIContainer.pack(playButton);
+  mGUIContainer.pack(GamesButton);
   mGUIContainer.pack(settingsButton);
   mGUIContainer.pack(exitButton);
 }

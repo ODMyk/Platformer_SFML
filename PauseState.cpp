@@ -31,10 +31,11 @@ PauseState::PauseState(StateStack &stack, Context context)
       std::make_shared<GUI::Button>(*context.fonts, *context.textures);
   backToMenuButton->setPosition(0.5f * windowSize.x - 100,
                                 0.4f * windowSize.y + 125);
-  backToMenuButton->setText("Back to menu");
+  backToMenuButton->setText("Back to games");
   backToMenuButton->setCallback([this]() {
     requestStateClear();
     requestStackPush(States::Menu);
+    requestStackPush(States::Games);
   });
   backToMenuButton->setTextColor(sf::Color::Black);
 

@@ -1,8 +1,5 @@
 dst/
-report/
-build/
 *.pdf
 *.clangd
 Makefile
 *.xopp
-*.tex
