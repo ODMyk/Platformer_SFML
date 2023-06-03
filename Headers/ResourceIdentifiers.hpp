@@ -15,7 +15,8 @@ enum ID {
   ButtonNormal,
   ButtonPressed,
   ButtonSelected,
-  Foreground_
+  Foreground_,
+  Star
 };
 }
 

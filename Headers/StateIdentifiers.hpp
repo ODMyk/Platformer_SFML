@@ -7,6 +7,7 @@ enum ID {
   Title,
   Menu,
   Level1S,
+  Level2S,
   Loading,
   Pause,
   Settings,

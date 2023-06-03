@@ -1,5 +1,6 @@
 #include "Headers/Application.hpp"
 #include "Headers/Level1.hpp"
+#include "Headers/Level2.hpp"
 #include "Headers/MenuState.hpp"
 #include "Headers/PauseState.hpp"
 #include "Headers/SettingsState.hpp"
@@ -91,6 +92,7 @@ void Application::registerStates() {
   mStateStack.registerState<TitleState>(States::Title);
   mStateStack.registerState<MenuState>(States::Menu);
   mStateStack.registerState<Level1>(States::Level1S);
+  mStateStack.registerState<Level2>(States::Level2S);
   mStateStack.registerState<PauseState>(States::Pause);
   mStateStack.registerState<SettingsState>(States::Settings);
 }

@@ -10,9 +10,9 @@ public:
   void setVelocity(float x, float y);
   void accelerate(sf::Vector2f velocity);
 
-private:
-  sf::Vector2f mVelocity;
+protected:
   virtual void updateCurrent(sf::Time timedelta);
+  sf::Vector2f mVelocity;
 };
 
 #endif
