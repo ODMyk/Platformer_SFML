@@ -1,5 +1,7 @@
 dst/
+.vscode/
 *.pdf
 *.clangd
 Makefile
 *.xopp
+*.dll

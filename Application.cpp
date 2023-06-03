@@ -7,6 +7,7 @@
 #include "StateIdentifiers.hpp"
 #include "TitleState.hpp"
 #include "Utility.hpp"
+#include "PingPong.hpp"
 
 const sf::Time Application::TimePerFrame = sf::seconds(1.f / 60.f);
 
@@ -91,6 +92,7 @@ void Application::registerStates() {
   mStateStack.registerState<TitleState>(States::Title);
   mStateStack.registerState<MenuState>(States::Menu);
   mStateStack.registerState<Level1>(States::Level1S);
+  mStateStack.registerState<PingPong>(States::PingPong);
   mStateStack.registerState<PauseState>(States::Pause);
   mStateStack.registerState<SettingsState>(States::Settings);
 }

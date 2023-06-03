@@ -17,14 +17,14 @@ MenuState::MenuState(StateStack &stack, Context context)
   playButton->setText("Play");
   playButton->setCallback([this]() {
     requestStackPop();
-    requestStackPush(States::Level1S);
+    requestStackPush(States::PingPong);
   });
 
   auto settingsButton =
       std::make_shared<GUI::Button>(*context.fonts, *context.textures);
   settingsButton->setPosition(540, 500);
   settingsButton->setText("Settings");
-  settingsButton->setCallback([this]() { requestStackPush(States::Settings); });
+  settingsButton->setCallback([this]() { requestStackPop(); requestStackPush(States::Level1S); });
 
   auto exitButton =
       std::make_shared<GUI::Button>(*context.fonts, *context.textures);

@@ -10,6 +10,7 @@ enum ID {
   Loading,
   Pause,
   Settings,
+  PingPong,
 };
 }
 
