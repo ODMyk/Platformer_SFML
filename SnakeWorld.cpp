@@ -5,7 +5,7 @@
 
 SnakeWorld::SnakeWorld(sf::RenderWindow& window): World(window), levelHeight(0), levelWidth(0) {
   loadTextures();
-  loadLevel("resources/SnakeMaps/1.txt");
+  loadLevel("resources/SnakeMaps/2.txt");
   buildScene();
 }
 
@@ -156,8 +156,6 @@ void SnakeWorld::update(sf::Time timedelta) {
 }
 
 void SnakeWorld::loadTextures() {
-
-//    mTextures.load(Textures::Background, "resources/img/Background.png");
     mTextures.load(Textures::Avatar, "resources/img/SnakeHead.png");
     mTextures.load(Textures::SnakeHead, "resources/img/SnakeHead.png");
     mTextures.load(Textures::SnakeTailUp, "resources/img/SnakeBodyUp.png");
@@ -221,24 +219,10 @@ void SnakeWorld::buildScene() {
   snake.add(5, 5);
   spawn_fruit();
 
-//  sf::Texture &textureHead = mTextures.get(Textures::SnakeHead);
   Head.setTexture(mTextures.get(Textures::SnakeHead));
   Up.setTexture(mTextures.get(Textures::SnakeTailUp));
   Left.setTexture(mTextures.get(Textures::SnakeTailLeft));
   Right.setTexture(mTextures.get(Textures::SnakeTailRight));
   Down.setTexture(mTextures.get(Textures::SnakeTailDown));
-
-//  sf::Texture &texture = mTextures.get(Textures::Background);
-//  mWorldBounds.width = levelWidth*32;
-//  mWorldBounds.height = levelHeight*32;
-//  sf::IntRect textureRect(mWorldBounds);
-
-//  std::unique_ptr<SpriteNode> foregroundSprite(new SpriteNode(texture0));
-//  foregroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
-
-
-//  std::unique_ptr<SpriteNode> backgroundSprite(new SpriteNode(texture));
-//  backgroundSprite->setPosition(mWorldBounds.left, mWorldBounds.top);
-//  mSceneLayers[Background]->attachChild(std::move(backgroundSprite));
 }
 

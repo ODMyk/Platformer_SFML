@@ -1367,7 +1367,7 @@
 	<vector>
 	<random>
 
-1685836958 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snakeworld.cpp
+1685881917 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snakeworld.cpp
 	<iostream>
 	"Headers/SnakeWorld.hpp"
 	"Headers/SpriteNode.hpp"
@@ -1402,7 +1402,7 @@
 	"SFML/Window/Keyboard.hpp"
 	<cmath>
 
-1685837057 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snake.cpp
+1685837722 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snake.cpp
 	"Headers/Snake.hpp"
 	"Headers/ResourceIdentifiers.hpp"
 	<iostream>

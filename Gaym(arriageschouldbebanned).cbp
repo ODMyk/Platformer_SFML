@@ -59,6 +59,7 @@
 		<Unit filename="Container.cpp" />
 		<Unit filename="Controller.cpp" />
 		<Unit filename="Entity.cpp" />
+		<Unit filename="GamesState.cpp" />
 		<Unit filename="Headers/Application.hpp">
 			<Option compile="1" />
 		</Unit>
@@ -90,6 +91,9 @@
 			<Option compile="1" />
 		</Unit>
 		<Unit filename="Headers/Entity.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/GamesState.hpp">
 			<Option compile="1" />
 		</Unit>
 		<Unit filename="Headers/Keybindings.hpp">
@@ -128,6 +132,24 @@
 		<Unit filename="Headers/SettingsState.hpp">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="Headers/Snake.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SnakeController.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SnakeGameOverState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SnakeGameState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SnakeMenuState.hpp">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Headers/SnakeWorld.hpp">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Headers/SpriteNode.hpp">
 			<Option compile="1" />
 		</Unit>
@@ -161,6 +183,12 @@
 		<Unit filename="PauseState.cpp" />
 		<Unit filename="SceneNode.cpp" />
 		<Unit filename="SettingsState.cpp" />
+		<Unit filename="Snake.cpp" />
+		<Unit filename="SnakeController.cpp" />
+		<Unit filename="SnakeGameOverState.cpp" />
+		<Unit filename="SnakeGameState.cpp" />
+		<Unit filename="SnakeMenuState.cpp" />
+		<Unit filename="SnakeWorld.cpp" />
 		<Unit filename="SpriteNode.cpp" />
 		<Unit filename="State.cpp" />
 		<Unit filename="StateStack.cpp" />
@@ -169,6 +197,7 @@
 		<Unit filename="World.cpp" />
 		<Unit filename="World1.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="resources/SnakeMaps/1.txt" />
 		<Unit filename="resources/fonts/impact.ttf" />
 		<Unit filename="resources/img/Background.jpg" />
 		<Unit filename="resources/img/Background.png" />
