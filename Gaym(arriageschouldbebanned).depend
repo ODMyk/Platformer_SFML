@@ -1359,7 +1359,7 @@
 1685832644 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snakegamestate.cpp
 	"Headers/SnakeGameState.hpp"
 
-1685832630 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\headers\snakeworld.hpp
+1685835916 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\headers\snakeworld.hpp
 	"World.hpp"
 	"Snake.hpp"
 	<iostream>
@@ -1367,13 +1367,13 @@
 	<vector>
 	<random>
 
-1685832637 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snakeworld.cpp
+1685836958 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snakeworld.cpp
 	<iostream>
 	"Headers/SnakeWorld.hpp"
 	"Headers/SpriteNode.hpp"
 	<SFML/Graphics.hpp>
 
-1685832630 c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\headers\snakeworld.hpp
+1685835916 c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\headers\snakeworld.hpp
 	"World.hpp"
 	"Snake.hpp"
 	<iostream>
@@ -1402,7 +1402,7 @@
 	"SFML/Window/Keyboard.hpp"
 	<cmath>
 
-1685827357 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snake.cpp
+1685837057 source:c:\users\nazar\onedrive\Рабочий стол\Програмування\oval gamedev\gaym(arriageschouldbebanned)\snake.cpp
 	"Headers/Snake.hpp"
 	"Headers/ResourceIdentifiers.hpp"
 	<iostream>

@@ -35,7 +35,7 @@ void Snake::MoveLeft()
 }
 void Snake::Eat()
 {
-    body.push_back(body[0]);
+    body.push_back(body[body.size()-1]);
 }
 sf::Vector2f Snake::getPosition(unsigned int ind)
 {

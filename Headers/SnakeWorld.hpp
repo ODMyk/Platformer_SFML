@@ -28,6 +28,12 @@ private:
     unsigned int levelHeight;
     std::vector<std::vector<char> >A;
     bool GameOver=0;
+
+    sf::Sprite Left;
+    sf::Sprite Up;
+    sf::Sprite Down;
+    sf::Sprite Right;
+    sf::Sprite Head;
 };
 
 #endif
